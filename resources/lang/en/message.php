@@ -640,4 +640,5 @@ return [
      'sales_man_replaced_success'   => 'Sales Manager replaced successfully',
      'stripe_key'                   => 'Stripe Key',
      'stripe_secret'                => 'Stripe Secret',
+     'product_not_found'            => 'Product Not Found',
 ];
