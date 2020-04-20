@@ -96,6 +96,7 @@ trait AuthenticatesUsers
          }
            } else{
                  activity()->log('Logged In');
+
                  return redirect()->intended($this->redirectPath());
          }
     }
