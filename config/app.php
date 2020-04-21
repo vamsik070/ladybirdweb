@@ -195,6 +195,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\CustomValidationProvider::class,
 
           Collective\Html\HtmlServiceProvider::class,
            Barryvdh\DomPDF\ServiceProvider::class,

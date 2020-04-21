@@ -640,4 +640,20 @@ return [
      'sales_man_replaced_success'   => 'Sales Manager replaced successfully',
      'stripe_key'                   => 'Stripe Key',
      'stripe_secret'                => 'Stripe Secret',
+
+
+    /*
+     * Validation Error Messages and others https://github.com/Phaniraj35
+     */
+    'country_missing' => 'Country cannot be empty.',
+    'currency_missing' => 'Currency cannot be empty',
+    'regular_price_numeric' => 'Regular prices must be numerical values',
+    'renew_price_numeric' => 'Renewal prices must be numerical values',
+    'add_price_for_country' => 'Add Price For Another Country',
+    'renew_price_required' => 'Renewal price cannot be empty.',
+    'add_price_required' => 'Regular price cannot be empty.',
+    'duplicate_country' => 'Duplicate Entries in Country and Currency Fields.',
+    'currency_array_equals' => 'Currency is not entered for all the countries or country not selected',
+    'renew_price_array_equals' => 'Renewal price is not entered for all countries or country not selected',
+    'add_price_array_equals'=> 'Regular price is not entered for all countries or country not selected',
 ];
