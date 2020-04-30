@@ -184,7 +184,7 @@ class DashboardController extends Controller
     public function getPendingPaymentsCur1($allowedCurrencies1)
     {
         $total = Invoice::where('currency', $allowedCurrencies1)
-        ->where('status', '=', 'pending')
+        ->where('status', '!=', 'success')
         ->pluck('grand_total')->all();
         $grandTotal = array_sum($total);
 
@@ -310,7 +310,7 @@ class DashboardController extends Controller
             ->orderBy("invoices.created_at", "desc")
             ->get()->map(function($element) {
                 $element->balance = (int)($element->grand_total - $element->paid);
-                $element->status = $element->balance > 0 ? "Pending": "Success";
+                $element->status = $element->balance == 0 ? "Success" :  $element->balance == $element->grand_total ? "Pending": "Partially paid";
                 $element->grand_total = currency_format((int)$element->grand_total, $element->currency_code);
                 $element->paid = currency_format((int)$element->paid, $element->currency_code);
                 $element->balance = currency_format((int)$element->balance, $element->currency_code);

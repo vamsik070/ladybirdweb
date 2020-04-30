@@ -368,6 +368,7 @@ class ClientController extends BaseClientController
 
                 $plan = $subscription->plan()->first();
             }
+            $installationDetails = [];  
             $licenseStatus = StatusSetting::pluck('license_status')->first();
             if ($licenseStatus == 1) {
                 $cont = new \App\Http\Controllers\License\LicenseController();
@@ -384,6 +385,7 @@ class ClientController extends BaseClientController
                 compact('invoice', 'order', 'user', 'plan', 'product', 'subscription', 'licenseStatus', 'installationDetails', 'allowDomainStatus')
             );
         } catch (Exception $ex) {
+            dd($ex);
             Bugsnag::notifyException($ex);
 
             return redirect('/')->with('fails', $ex->getMessage());

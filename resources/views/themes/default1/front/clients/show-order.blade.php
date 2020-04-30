@@ -141,7 +141,7 @@ active
                                                 
                                             </tr>
                                                  <tr><td><b>Installation Path:</b></td> 
-                                                    @if(count($installationDetails['installed_path']) > 0)
+                                                    @if($installationDetails)
                                                     <td>@foreach($installationDetails['installed_path'] as $paths)
                                                         <li>{{$paths}}</li>
                                                         @endforeach
@@ -154,7 +154,7 @@ active
                                                     </tr>
 
                                                 <tr><td><b>Installation IP:</b></td> 
-                                                @if(count($installationDetails['installed_path']) > 0)    
+                                                @if($installationDetails)    
                                                     <td>
                                                         @foreach($installationDetails['installed_ip'] as $paths)
                                                         <li>{{$paths}}</li>

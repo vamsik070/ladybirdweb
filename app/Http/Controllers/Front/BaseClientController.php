@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\User\AdminOrderInvoiceController;
 use App\Http\Controllers\License\LicensePermissionsController;
 use App\Http\Requests\User\ProfileRequest;
 use App\Model\Order\Invoice;
@@ -221,7 +222,7 @@ class BaseClientController extends Controller
                 return currency_format($model->grand_total, $code = $model->currency);
             })
             ->addColumn('status', function ($model) {
-                return ucfirst($model->status);
+                return AdminOrderInvoiceController::getStatusLabel($model->status);
             })
             ->addColumn('action', function ($model) {
                 if (\Auth::user()->role == 'admin') {
