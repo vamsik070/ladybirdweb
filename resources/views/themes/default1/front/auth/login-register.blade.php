@@ -76,546 +76,542 @@ $mobile_code = \App\Http\Controllers\Front\CartController::getMobileCodeByIso($l
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
-<div class="row">
-    <div class="col-md-12">
 
-        <section>
-            <div class="wizard">
-                <div class="wizard-inner" style="display: none">
-                    
-                        <ul class="nav nav-tabs" role="tablist" style=" margin: -5px!important;">
-                            <li role="presentation" class="active">
-                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab">
-                                   
-                                    
-                                </a>
-                                <p style="display: none">Contact Information</p>
-                            </li>
-                            <li role="presentation" class="disabled" >
-                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" >
-                                   
-                                    
-                                </a>
-                                <p style="display: none">Identity Verification</p>
-                            </li>
-                             <li role="presentation" class="disabled">
-                                <a href="#step3" data-toggle="tab" aria-controls="complete" role="tab" title="Confirmation">
-                                 
-                                    
-                                </a>
-                                <p style="display: none">Confirmation</p>
-                            </li>
+    <section page-header page-header-light page-header-more-padding>
+        <div class="wizard">
+            <div class="wizard-inner" style="display: none">
 
-                           
-                        </ul>
-                    </div>
-                    <div class="row tab-content">
-                        <div class="col-md-12 tab-pane active" id="step1">
-                            <div class="featured-boxes">
-                                <div id="error">
-                                </div>
-                                <div id="success">
-                                </div>
-                                <div id="fails">
-                                </div>
-                                 <div id="alertMessage1"></div>
-                                 <div id="alertMessage2"></div>
-                                 <!-- <div id="error2">
-                                 </div>
-                                 <div id="alertMessage2" class="-text" ></div> -->
-                                @if(Session::has('success'))
-                                <div class="alert alert-success">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                   <strong><i class="far fa-thumbs-up"></i> Well done!</strong>
-                                        {{Session::get('success')}}
-                                </div>
-                                @endif
-                                <!-- fail message -->
-                                @if(Session::has('fails'))
-                                <div class="alert alert-danger alert-dismissable" role="alert">
-                                    
-                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                      <strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Change a few things up and try submitting again.
-                                   <ul>
-                                  <li>  {{Session::get('fails')}} </li>
+                    <ul class="nav nav-tabs" role="tablist" style=" margin: -5px!important;">
+                        <li role="presentation" class="active">
+                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab">
+
+
+                            </a>
+                            <p style="display: none">Contact Information</p>
+                        </li>
+                        <li role="presentation" class="disabled" >
+                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" >
+
+
+                            </a>
+                            <p style="display: none">Identity Verification</p>
+                        </li>
+                         <li role="presentation" class="disabled">
+                            <a href="#step3" data-toggle="tab" aria-controls="complete" role="tab" title="Confirmation">
+
+
+                            </a>
+                            <p style="display: none">Confirmation</p>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="step1">
+                        <div class="featured-boxes">
+                            <div id="error">
+                            </div>
+                            <div id="success">
+                            </div>
+                            <div id="fails">
+                            </div>
+                             <div id="alertMessage1"></div>
+                             <div id="alertMessage2"></div>
+                             <!-- <div id="error2">
+                             </div>
+                             <div id="alertMessage2" class="-text" ></div> -->
+                            @if(Session::has('success'))
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                               <strong><i class="far fa-thumbs-up"></i> Well done!</strong>
+                                    {{Session::get('success')}}
+                            </div>
+                            @endif
+                            <!-- fail message -->
+                            @if(Session::has('fails'))
+                            <div class="alert alert-danger alert-dismissable" role="alert">
+
+                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                  <strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Change a few things up and try submitting again.
+                               <ul>
+                              <li>  {{Session::get('fails')}} </li>
+                            </ul>
+                            </div>
+                            @endif
+                            @if (count($errors) > 0)
+                               <div class="alert alert-danger alert-dismissable" role="alert">
+                               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                               <strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Change a few things up and try submitting again.
+
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{!! $error !!}</li>
+                                    @endforeach
                                 </ul>
-                                </div>
-                                @endif
-                                @if (count($errors) > 0)
-                                   <div class="alert alert-danger alert-dismissable" role="alert">
-                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                   <strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Change a few things up and try submitting again.
+                            </div>
+                            @endif
+                            <div class="row">
+                               <div class="col-sm-6">
+                                    <div class="featured-box featured-box-primary text-left mt-5">
+                                        <div class="box-content">
 
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{!! $error !!}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                @endif
-                                <div class="row">
-                                   <div class="col-sm-6">
-                                        <div class="featured-box featured-box-primary text-left mt-5">
-                                            <div class="box-content">
-                                             
-                                                <h4 class="heading-primary text-uppercase mb-3">I'm a Returning Customer</h4>
-                                                  @if ($captchaStatus==1 && $captchaSiteKey != '00' && $captchaSecretKey != '00')  
-                                                {!!  Form::open(['action'=>'Auth\LoginController@postLogin', 'method'=>'post','id'=>'formoid','onsubmit'=>'return validateform()']) !!}
-                                                @else
-                                                {!!  Form::open(['action'=>'Auth\LoginController@postLogin', 'method'=>'post','id'=>'formoid']) !!}
-                                                @endif
-                                                 <div class="form-row">
-                                                    <div class="form-group col {{ $errors->has('email1') ? 'has-error' : '' }}">
-                                                       
-                                                            <label class="required">Username or E-mail Address</label>
-                                                              <div class="input-group">
-                                                              {!! Form::text('email1',null,['class' => 'form-control input-lg','id'=>'username','autocomplete'=>"off" ]) !!}
-                                                                <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                                          </div>
-                                                             
-                                                             </div>
-                                                             <h6 id="usercheck"></h6>
+                                            <h4 class="heading-primary text-uppercase mb-3">I'm a Returning Customer</h4>
+                                              @if ($captchaStatus==1 && $captchaSiteKey != '00' && $captchaSecretKey != '00')
+                                            {!!  Form::open(['action'=>'Auth\LoginController@postLogin', 'method'=>'post','id'=>'formoid','onsubmit'=>'return validateform()']) !!}
+                                            @else
+                                            {!!  Form::open(['action'=>'Auth\LoginController@postLogin', 'method'=>'post','id'=>'formoid']) !!}
+                                            @endif
+                                             <div class="form-row">
+                                                <div class="form-group col {{ $errors->has('email1') ? 'has-error' : '' }}">
 
-                                                        
-                                                    </div>
+                                                        <label class="required">Username or E-mail Address</label>
+                                                          <div class="input-group">
+                                                          {!! Form::text('email1',null,['class' => 'form-control input-lg','id'=>'username','autocomplete'=>"off" ]) !!}
+                                                            <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                                      </div>
+
+                                                         </div>
+                                                         <h6 id="usercheck"></h6>
+
+
                                                 </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col {{ $errors->has('password1') ? 'has-error' : '' }}">
-                                                           
-                                                            <a class="pull-right" href="{{url('password/email')}}">({{Lang::get('message.forgot-my-password')}})</a>
-                                                            <label class="required">Password</label>
-                                                             <div class="input-group">
-                                                            {!! Form::password('password1',['class' => 'form-control input-lg' ,'id'=>'pass']) !!}
-                                                              <div class="input-group-append">
-                                                            <span class="input-group-text"><i class="fa fa-key"></i></span>
-                                                          </div>
-                                                          
-                                                        </div>
-                                                        <h6 id="passcheck"></h6>
-                                                            <!--<input type="password" value="" class="form-control input-lg">-->
-                                                        
-                                                    </div>
-                                                </div>
-                                                
-                                                @if ($captchaStatus==1 && $captchaSiteKey != '00' && $captchaSecretKey != '00')  
-                                                {!! NoCaptcha::renderJs() !!}
-                                              {!! NoCaptcha::display() !!}
-                                             <div class="loginrobot-verification"></div>
-                                                @endif
-                                                 <div class="form-row">
-                                                    <div class="form-group col-lg-6">
-                                                        <div class="form-check form-check-inline">
-                                                       
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" id="rememberme" name="remember">Remember Me
-                                                            </label>
-                                                        
-                                                    </div>
-                                                    </div>
-                                                     <div class="form-group col-lg-6">
-                                                       <input type="submit" value="Login" id="submitbtn" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
-                                                      <!-- <button type="button" class="btn btn-primary mb-xl next-step float-right" name="sendOtp" id="login" onclick="loginUser()">
-                                                                  Send Email
-                                                      </button> -->
-                                                       
-                                                    </div>
-                                                </div>
-                                                {!! Form::close() !!}
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                         <div class="featured-box featured-box-primary text-left mt-5">
-                                            <div class="box-content">
-                                               <h4 class="heading-primary text-uppercase mb-3">Register An Account</h4>
-                                               
-                                                <form name="registerForm" id="regiser-form">
-                                              
-                                                <div class="row">
-                                                   
-                                                        <div class="form-group col-lg-6 {{ $errors->has('first_name') ? 'has-error' : '' }}">
-                                                          <!--   {!! Form::label('first_name',Lang::get('message.first_name'),['class'=>'required']) !!} -->
-                                                          <label class="required">First Name</label>
-                                                          
-                                                            {!! Form::text('first_name',null,['class'=>'form-control input-lg', 'id'=>'first_name']) !!}
-                                                            <span id="first_namecheck"></span>
-                                                           </div>
-                                                            
+                                            <div class="form-row">
+                                                <div class="form-group col {{ $errors->has('password1') ? 'has-error' : '' }}">
 
-                                                        
-                                                            <div class="form-group col-lg-6 {{ $errors->has('last_name') ? 'has-error' : '' }}">
-                                                                <label class="required">Last Name</label>
-                                                                {!! Form::text('last_name',null,['class'=>'form-control input-lg', 'id'=>'last_name']) !!}
-                                                             <span id="last_namecheck"></span>
+                                                        <a class="pull-right" href="{{url('password/email')}}">({{Lang::get('message.forgot-my-password')}})</a>
+                                                        <label class="required">Password</label>
+                                                         <div class="input-group">
+                                                        {!! Form::password('password1',['class' => 'form-control input-lg' ,'id'=>'pass']) !!}
+                                                          <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                                      </div>
 
-                                                        </div>
-                                                        
-                                                    
-                                                </div>
-                                                 <div class="form-row">
-                                                    
-                                                        <div class="form-group col {{ $errors->has('email') ? 'has-error' : '' }}">
-                                                            <label class="required">Email Address</label>
-                                                            {!! Form::email('email',null,['class'=>'form-control input-lg', 'id'=>'email']) !!}
-                                                            <span id="emailcheck"></span>
-                                                        </div>
-
-                                                      
-                                                </div>
-                                                
-
-                                                <div class="row">
-                                                   
-                                                        <div class="form-group col-lg-6 {{ $errors->has('company') ? 'has-error' : '' }}">
-                                                            <label  class="required">Company Name</label>
-                                                            {!! Form::text('company',null,['class'=>'form-control input-lg', 'id'=>'company']) !!}
-                                                             <span id="companycheck"></span>
-                                                        </div>
-                                                       
-
-                                                        <div class="form-group col-lg-6 {{ $errors->has('bussiness') ? 'has-error' : '' }}">
-                                                            <label class="required">Industry</label>
-                                                            {!! Form::select('bussiness',[''=>'Choose','Industry'=>$bussinesses],null,['class'=>'form-control input-lg', 'id'=>'business']) !!}
-                                                    
-                                                            <span id="bussinesscheck"></span>
-                                                        </div>
-                                                        
-
-                                                    
-                                                </div>
-                                                 
-                                                <div class='row'>
-                                                    <?php
-                                                    $type = DB::table('company_types')->pluck('name', 'short')->toArray();;
-
-                                                    $size = DB::table('company_sizes')->pluck('name', 'short')->toArray();;
-
-                                                    ?>
-                                                    <div class="col-md-6 form-group {{ $errors->has('role') ? 'has-error' : '' }}">
-                                                        <!-- email -->
-                                                        {!! Form::label('company_type','Company Type',['class'=>'required']) !!}
-                                                        {!! Form::select('company_type',[''=>'Choose','Company Types'=>$type],null,['class' => 'form-control input-lg', 'id'=>'company_type']) !!}
-                                                     <span id="company_typecheck"></span>
                                                     </div>
-                                                    
-
-                                                    <div class="col-md-6 form-group {{ $errors->has('role') ? 'has-error' : '' }}">
-                                                        <!-- email -->
-                                                        {!! Form::label('company_size','Company Size',['class'=>'required']) !!}
-                                                        {!! Form::select('company_size',[''=>'Choose','Company Sizes'=>$size],null,['class' => 'form-control input-lg', 'id'=>'company_size']) !!}
-                                                       <span id="company_sizecheck"></span>
-                                                    </div>
-                                                    
+                                                    <h6 id="passcheck"></h6>
+                                                        <!--<input type="password" value="" class="form-control input-lg">-->
 
                                                 </div>
-                                                <div class="form-row">
-                                                      <div class="form-group col {{ $errors->has('country') ? 'has-error' : '' }}">
-                                                                {!! Form::label('country',Lang::get('message.country'),['class'=>'required']) !!}
-                                                                <?php $countries = \App\Model\Common\Country::pluck('nicename', 'country_code_char2')->toArray(); ?>
-                                                                {!! Form::select('country',[''=>'','Choose'=>$countries],$country,['class' => 'form-control input-lg selectpicker','data-live-search-style'=>"startsWith",'data-live-search'=>'true','data-live-search-placeholder'=>'Search','data-dropup-auto'=>'false','data-size'=>'10','onChange'=>'getCountryAttr(this.value);','id'=>'country']) !!}
-                                                            <span id="countrycheck"></span>
+                                            </div>
 
-                                                            </div>
-                                                            
-                                                 </div>
-                                                <div class="form-row">
-                                                    <div class="col-lg-12 form-group {{ $errors->has('mobile_code') ? 'has-error' : '' }}">
-                                                        <label class="required">Mobile</label>
-                                                        {!! Form::hidden('mobile',null,['id'=>'mobile_code_hidden']) !!}
-                                                           <input class="form-control input-lg" id="mobilenum" name="mobile" type="tel">
-                                                        {!! Form::hidden('mobile_code',null,['class'=>'form-control input-lg','disabled','id'=>'mobile_code']) !!}
-                                                        <span id="valid-msg" class="hide"></span>
-                                                        <span id="error-msg" class="hide"></span>
-                                                        <span id="mobile_codecheck"></span>
-                                                    </div>
-                                                     
+                                            @if ($captchaStatus==1 && $captchaSiteKey != '00' && $captchaSecretKey != '00')
+                                            {!! NoCaptcha::renderJs() !!}
+                                          {!! NoCaptcha::display() !!}
+                                         <div class="loginrobot-verification"></div>
+                                            @endif
+                                             <div class="form-row">
+                                                <div class="form-group col-lg-6">
+                                                    <div class="form-check form-check-inline">
 
-                                                   
-                                                </div>
-                                                <div class="form-row">
-                                                   
-                                                        <div class="form-group col {{ $errors->has('address') ? 'has-error' : '' }}">
-                                                            <label class="required">Address</label>
-                                                            {!! Form::textarea('address',null,['class'=>'form-control','rows'=>4, 'id'=>'address']) !!}
-
-                                                       <span id="addresscheck"></span>
-                                                    </div>
-                                                     
-
-                                                </div>
-                                                  <div class="form-row">
-                                                    
-                                                        <div class="form-group col-lg-6 {{ $errors->has('town') ? 'has-error' : '' }}">
-                                                            <label>City/Town</label>
-                                                            {!! Form::text('town',$location['city'],['class'=>'form-control input-lg', 'id'=>'city']) !!}
-                                                             <span id="towncheck"></span>
-                                                        </div>
-                                                       
-
-                                                        
-                                                            <div class="form-group col-lg-6 {{ $errors->has('state') ? 'has-error' : '' }}">
-                                                                {!! Form::label('state',Lang::get('message.state')) !!}
-                                                                <?php
-                                                                $value = "";
-                                                                if (count($state) > 0) {
-                                                                    $value = $state;
-                                                                }
-                                                                if (old('state')) {
-                                                                    $value = old('state');
-                                                                }
-                                                                ?>
-
-                                                                   {!! Form::select('state',[$states],$value,['class' => 'form-control input-lg','id'=>'state-list']) !!}
-                                                               
-                                                            <span id="statecheck"></span>
-                                                            </div>
-                                                             
-
-                                                        
-                                                   
-                                                </div>
-                                                <div class="form-row">
-                                                    
-                                                        
-                                                            <div class="form-group col-lg-6 {{ $errors->has('zip') ? 'has-error' : '' }}">
-                                                                <label class="required">Zip/Postal Code</label>
-                                                                {!! Form::text('zip',$location['zip'],['class'=>'form-control input-lg', 'id'=>'zip']) !!}
-                                                                 <span id="zipcheck"></span>
-                                                            </div>
-                                                            
-
-
-                                                            <div class="form-group col-md-6 {{ $errors->has('user_name') ? 'has-error' : '' }}">
-                                                                <label class="required">User Name/E-mail Id</label>
-                                                                {!! Form::text('user_name',null,['class'=>'form-control input-lg', 'id'=>'user_name']) !!}
-                                                                 <span id="user_namecheck"></span>
-                                                            </div>
-                                                            
-
-                                                       
-                                                    
-                                                </div>
-                                                <div class="form-row">
-                                                   
-                                              <div class="form-group col-lg-6 {{ $errors->has('password') ? 'has-error' : '' }}">
-                                                            <label class="required">Password</label>
-                                                            {!! Form::password('password',['class'=>'form-control input-lg', 'id'=>'password']) !!}
-                                                            <span id="password1check"></span>
-                                                        </div>
-                                                         
-
-                                                        <div class="form-group col-lg-6 {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
-                                                            <label class="required">Re-enter Password</label>
-
-                                                            {!! Form::password('password_confirmation',['class'=>'form-control input-lg', 'id'=>'confirm_pass']) !!}
-                                                             <span id="conpasscheck"></span>
-                                                        </div>
-                                                        
-
-                                                   
-                                                </div>
-
-                                              <!--   <input type="checkbox" name="checkbox" id="option" value="{{old('option')}}"><label for="option"><span></span> <p>I agree to the <a href="#">terms</a></p></label>
- -->                                            
-                                                 @if ($captchaStatus==1 && $captchaSiteKey != '00' && $captchaSecretKey != '00')  
-                                                 {!! NoCaptcha::display() !!}
-                                           <div class="robot-verification" id="captcha"></div>
-                                           <span id="captchacheck"></span>
-                                                @endif
-                                               <div class="form-row">
-                                                @if ($termsStatus ==0)
-                                                 <div class="form-group col-lg-6">
-                                                <input type="hidden" value="true" name="terms" id="term">
-                                                  </div>
-                                                    @else
-                                                    <div class="form-group col-lg-6">
-                                                        <label>
-
-                                                            <input type="checkbox" value="false" name="terms" id="term" > {{Lang::get('message.i-agree-to-the')}} <a href="{{$termsUrl}}" target="_blank">{{Lang::get('message.terms')}}</a>
+                                                        <label class="form-check-label">
+                                                            <input class="form-check-input" type="checkbox" id="rememberme" name="remember">Remember Me
                                                         </label>
-                                                        <span id="termscheck"></span>
-                                                    </div>
-                                                 @endif
-                                                  
-                                                          <div class="form-group col-lg-6">
-                                                              <button type="button"  class="btn btn-primary pull-right marginright mb-xl next-step"  name="register" id="register" onclick="registerUser()">Submit</button>
-                                                          </div>
-                                                   
-                                                </div>
 
-                                                <div class="form-row">
-                                                   <div class="form-group col-lg-6">
-                                                   </div>
                                                 </div>
-                                             
-                                                </form>
+                                                </div>
+                                                 <div class="form-group col-lg-6">
+                                                   <input type="submit" value="Login" id="submitbtn" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                                                  <!-- <button type="button" class="btn btn-primary mb-xl next-step float-right" name="sendOtp" id="login" onclick="loginUser()">
+                                                              Send Email
+                                                  </button> -->
+
+                                                </div>
                                             </div>
+                                            {!! Form::close() !!}
                                         </div>
-
                                     </div>
+                                </div>
+                                <div class="col-sm-6">
+                                     <div class="featured-box featured-box-primary text-left mt-5">
+                                        <div class="box-content">
+                                           <h4 class="heading-primary text-uppercase mb-3">Register An Account</h4>
+
+                                            <form name="registerForm" id="regiser-form">
+
+                                            <div class="row">
+
+                                                    <div class="form-group col-lg-6 {{ $errors->has('first_name') ? 'has-error' : '' }}">
+                                                      <!--   {!! Form::label('first_name',Lang::get('message.first_name'),['class'=>'required']) !!} -->
+                                                      <label class="required">First Name</label>
+
+                                                        {!! Form::text('first_name',null,['class'=>'form-control input-lg', 'id'=>'first_name']) !!}
+                                                        <span id="first_namecheck"></span>
+                                                       </div>
+
+
+
+                                                        <div class="form-group col-lg-6 {{ $errors->has('last_name') ? 'has-error' : '' }}">
+                                                            <label class="required">Last Name</label>
+                                                            {!! Form::text('last_name',null,['class'=>'form-control input-lg', 'id'=>'last_name']) !!}
+                                                         <span id="last_namecheck"></span>
+
+                                                    </div>
+
+
+                                            </div>
+                                             <div class="form-row">
+
+                                                    <div class="form-group col {{ $errors->has('email') ? 'has-error' : '' }}">
+                                                        <label class="required">Email Address</label>
+                                                        {!! Form::email('email',null,['class'=>'form-control input-lg', 'id'=>'email']) !!}
+                                                        <span id="emailcheck"></span>
+                                                    </div>
+
+
+                                            </div>
+
+
+                                            <div class="row">
+
+                                                    <div class="form-group col-lg-6 {{ $errors->has('company') ? 'has-error' : '' }}">
+                                                        <label  class="required">Company Name</label>
+                                                        {!! Form::text('company',null,['class'=>'form-control input-lg', 'id'=>'company']) !!}
+                                                         <span id="companycheck"></span>
+                                                    </div>
+
+
+                                                    <div class="form-group col-lg-6 {{ $errors->has('bussiness') ? 'has-error' : '' }}">
+                                                        <label class="required">Industry</label>
+                                                        {!! Form::select('bussiness',[''=>'Choose','Industry'=>$bussinesses],null,['class'=>'form-control input-lg', 'id'=>'business']) !!}
+
+                                                        <span id="bussinesscheck"></span>
+                                                    </div>
+
+
+
+                                            </div>
+
+                                            <div class='row'>
+                                                <?php
+                                                $type = DB::table('company_types')->pluck('name', 'short')->toArray();;
+
+                                                $size = DB::table('company_sizes')->pluck('name', 'short')->toArray();;
+
+                                                ?>
+                                                <div class="col-md-6 form-group {{ $errors->has('role') ? 'has-error' : '' }}">
+                                                    <!-- email -->
+                                                    {!! Form::label('company_type','Company Type',['class'=>'required']) !!}
+                                                    {!! Form::select('company_type',[''=>'Choose','Company Types'=>$type],null,['class' => 'form-control input-lg', 'id'=>'company_type']) !!}
+                                                 <span id="company_typecheck"></span>
+                                                </div>
+
+
+                                                <div class="col-md-6 form-group {{ $errors->has('role') ? 'has-error' : '' }}">
+                                                    <!-- email -->
+                                                    {!! Form::label('company_size','Company Size',['class'=>'required']) !!}
+                                                    {!! Form::select('company_size',[''=>'Choose','Company Sizes'=>$size],null,['class' => 'form-control input-lg', 'id'=>'company_size']) !!}
+                                                   <span id="company_sizecheck"></span>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="form-row">
+                                                  <div class="form-group col {{ $errors->has('country') ? 'has-error' : '' }}">
+                                                            {!! Form::label('country',Lang::get('message.country'),['class'=>'required']) !!}
+                                                            <?php $countries = \App\Model\Common\Country::pluck('nicename', 'country_code_char2')->toArray(); ?>
+                                                            {!! Form::select('country',[''=>'','Choose'=>$countries],$country,['class' => 'form-control input-lg selectpicker','data-live-search-style'=>"startsWith",'data-live-search'=>'true','data-live-search-placeholder'=>'Search','data-dropup-auto'=>'false','data-size'=>'10','onChange'=>'getCountryAttr(this.value);','id'=>'country']) !!}
+                                                        <span id="countrycheck"></span>
+
+                                                        </div>
+
+                                             </div>
+                                            <div class="form-row">
+                                                <div class="col-lg-12 form-group {{ $errors->has('mobile_code') ? 'has-error' : '' }}">
+                                                    <label class="required">Mobile</label>
+                                                    {!! Form::hidden('mobile',null,['id'=>'mobile_code_hidden']) !!}
+                                                       <input class="form-control input-lg" id="mobilenum" name="mobile" type="tel">
+                                                    {!! Form::hidden('mobile_code',null,['class'=>'form-control input-lg','disabled','id'=>'mobile_code']) !!}
+                                                    <span id="valid-msg" class="hide"></span>
+                                                    <span id="error-msg" class="hide"></span>
+                                                    <span id="mobile_codecheck"></span>
+                                                </div>
+
+
+
+                                            </div>
+                                            <div class="form-row">
+
+                                                    <div class="form-group col {{ $errors->has('address') ? 'has-error' : '' }}">
+                                                        <label class="required">Address</label>
+                                                        {!! Form::textarea('address',null,['class'=>'form-control','rows'=>4, 'id'=>'address']) !!}
+
+                                                   <span id="addresscheck"></span>
+                                                </div>
+
+
+                                            </div>
+                                              <div class="form-row">
+
+                                                    <div class="form-group col-lg-6 {{ $errors->has('town') ? 'has-error' : '' }}">
+                                                        <label>City/Town</label>
+                                                        {!! Form::text('town',$location['city'],['class'=>'form-control input-lg', 'id'=>'city']) !!}
+                                                         <span id="towncheck"></span>
+                                                    </div>
+
+
+
+                                                        <div class="form-group col-lg-6 {{ $errors->has('state') ? 'has-error' : '' }}">
+                                                            {!! Form::label('state',Lang::get('message.state')) !!}
+                                                            <?php
+                                                            $value = "";
+                                                            if (count($state) > 0) {
+                                                                $value = $state;
+                                                            }
+                                                            if (old('state')) {
+                                                                $value = old('state');
+                                                            }
+                                                            ?>
+
+                                                               {!! Form::select('state',[$states],$value,['class' => 'form-control input-lg','id'=>'state-list']) !!}
+
+                                                        <span id="statecheck"></span>
+                                                        </div>
+
+
+
+
+                                            </div>
+                                            <div class="form-row">
+
+
+                                                        <div class="form-group col-lg-6 {{ $errors->has('zip') ? 'has-error' : '' }}">
+                                                            <label class="required">Zip/Postal Code</label>
+                                                            {!! Form::text('zip',$location['zip'],['class'=>'form-control input-lg', 'id'=>'zip']) !!}
+                                                             <span id="zipcheck"></span>
+                                                        </div>
+
+
+
+                                                        <div class="form-group col-md-6 {{ $errors->has('user_name') ? 'has-error' : '' }}">
+                                                            <label class="required">User Name/E-mail Id</label>
+                                                            {!! Form::text('user_name',null,['class'=>'form-control input-lg', 'id'=>'user_name']) !!}
+                                                             <span id="user_namecheck"></span>
+                                                        </div>
+
+
+
+
+                                            </div>
+                                            <div class="form-row">
+
+                                          <div class="form-group col-lg-6 {{ $errors->has('password') ? 'has-error' : '' }}">
+                                                        <label class="required">Password</label>
+                                                        {!! Form::password('password',['class'=>'form-control input-lg', 'id'=>'password']) !!}
+                                                        <span id="password1check"></span>
+                                                    </div>
+
+
+                                                    <div class="form-group col-lg-6 {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+                                                        <label class="required">Re-enter Password</label>
+
+                                                        {!! Form::password('password_confirmation',['class'=>'form-control input-lg', 'id'=>'confirm_pass']) !!}
+                                                         <span id="conpasscheck"></span>
+                                                    </div>
+
+
+
+                                            </div>
+
+                                          <!--   <input type="checkbox" name="checkbox" id="option" value="{{old('option')}}"><label for="option"><span></span> <p>I agree to the <a href="#">terms</a></p></label>
+-->
+                                             @if ($captchaStatus==1 && $captchaSiteKey != '00' && $captchaSecretKey != '00')
+                                             {!! NoCaptcha::display() !!}
+                                       <div class="robot-verification" id="captcha"></div>
+                                       <span id="captchacheck"></span>
+                                            @endif
+                                           <div class="form-row">
+                                            @if ($termsStatus ==0)
+                                             <div class="form-group col-lg-6">
+                                            <input type="hidden" value="true" name="terms" id="term">
+                                              </div>
+                                                @else
+                                                <div class="form-group col-lg-6">
+                                                    <label>
+
+                                                        <input type="checkbox" value="false" name="terms" id="term" > {{Lang::get('message.i-agree-to-the')}} <a href="{{$termsUrl}}" target="_blank">{{Lang::get('message.terms')}}</a>
+                                                    </label>
+                                                    <span id="termscheck"></span>
+                                                </div>
+                                             @endif
+
+                                                      <div class="form-group col-lg-6">
+                                                          <button type="button"  class="btn btn-primary pull-right marginright mb-xl next-step"  name="register" id="register" onclick="registerUser()">Submit</button>
+                                                      </div>
+
+                                            </div>
+
+                                            <div class="form-row">
+                                               <div class="form-group col-lg-6">
+                                               </div>
+                                            </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-
-              <div class="col-md-12 tab-pane" id="step2">
-
-                    <div class="featured-boxes">
-
-                  
-                              <!-- fail message -->
-                    <div class="row">
-                    <div class="col-lg-6 offset-lg-3">
-                    <div id="successMessage1"></div>
-                        <div id = "emailsuccess"></div>
-                     <!-- <div id="successMessage2"></div> -->
-
-                    <div id="error1">
                     </div>
-                    <div class="featured-box featured-box-primary text-left mt-5">
-                        <div class="box-content">
-                          
-                     <form class="form-horizontal" novalidate="novalidate" name="verifyForm">
 
-                                <h4 class="heading-primary text-uppercase mb-md">Confirm Email/Mobile</h4>
-                                           
-                                <input type="hidden" name="user_id" id="user_id"/>
-                                <input type="hidden" name="email_password" id="email_password"/>
-                                <input type="hidden" id="checkEmailStatus" value="{{$emailStatus}}">
-                             @if($emailStatus == 1)
-                              <p>You will be sent a verification email by an automated system, Please click on the verification link in the email. Click next to continue</p>
-                              <div class="form-row">
-                                  <div class="form-group col">
-                                        <label  for="mobile" class="required">Email</label>
-                                      <div class="input-group">
-                                         <input type="hidden" id="emailstatusConfirm" value="{{$emailStatus}}">  
-                                         <input type="email" value="" name="verify_email" id="verify_email" class="form-control form-control input-lg">
-                                         <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                                         </div>
-                                      
-                                    </div>
-                                      <span id="conemail"></span>
-                                  </div>
-                                     
-                              </div>
-                              @endif
+          <div class="col-md-12 tab-pane" id="step2">
 
-                                                     
-                                            
-                            @if($mobileStatus == 1)   
-                             <p>You will be sent an OTP on your mobile immediately by an automated system, Please enter the OTP in the next step. Click next to continue</p>
-                              <div class="form-row">
-                                   <div class="form-group col">
-                                     <input id="mobile_code_hidden" name="mobile_code" type="hidden">
-                                      <input class="form-control form-control input-lg"  id="verify_country_code" name="verify_country_code" type="hidden">
-                                    <label for="mobile" class="required">Mobile</label><br/>
-                                     <input type="hidden" id="mobstatusConfirm" value="{{$mobileStatus}}">  
-                                    <input class="form-control input-lg phone"  name="verify_number" type="text" id="verify_number">
-                                    <span id="valid-msg1" class="hide"></span>
-                                    <span id="error-msg1" class="hide"></span>
-                                
-                                    <span id="conmobile"></span>
-                              </div>
-                                 
-                              </div>
-                              @endif
+                <div class="featured-boxes">
 
-                                <div class="form-row">
-                                     <div class="form-group col">
-                                           
-                                        <button type="button" class="btn btn-primary mb-xl next-step float-right" name="sendOtp" id="sendOtp" onclick="sendOTP()">
-                                                 Next
-                                        </button>
+
+                          <!-- fail message -->
+                <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                <div id="successMessage1"></div>
+                    <div id = "emailsuccess"></div>
+                 <!-- <div id="successMessage2"></div> -->
+
+                <div id="error1">
+                </div>
+                <div class="featured-box featured-box-primary text-left mt-5">
+                    <div class="box-content">
+
+                 <form class="form-horizontal" novalidate="novalidate" name="verifyForm">
+
+                            <h4 class="heading-primary text-uppercase mb-md">Confirm Email/Mobile</h4>
+
+                            <input type="hidden" name="user_id" id="user_id"/>
+                            <input type="hidden" name="email_password" id="email_password"/>
+                            <input type="hidden" id="checkEmailStatus" value="{{$emailStatus}}">
+                         @if($emailStatus == 1)
+                          <p>You will be sent a verification email by an automated system, Please click on the verification link in the email. Click next to continue</p>
+                          <div class="form-row">
+                              <div class="form-group col">
+                                    <label  for="mobile" class="required">Email</label>
+                                  <div class="input-group">
+                                     <input type="hidden" id="emailstatusConfirm" value="{{$emailStatus}}">
+                                     <input type="email" value="" name="verify_email" id="verify_email" class="form-control form-control input-lg">
+                                     <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                      </div>
-                                  </div>
-                               
-                                
-                               
-                          </form>
-                        </div>
+
+                                </div>
+                                  <span id="conemail"></span>
+                              </div>
+
+                          </div>
+                          @endif
+
+
+
+                        @if($mobileStatus == 1)
+                         <p>You will be sent an OTP on your mobile immediately by an automated system, Please enter the OTP in the next step. Click next to continue</p>
+                          <div class="form-row">
+                               <div class="form-group col">
+                                 <input id="mobile_code_hidden" name="mobile_code" type="hidden">
+                                  <input class="form-control form-control input-lg"  id="verify_country_code" name="verify_country_code" type="hidden">
+                                <label for="mobile" class="required">Mobile</label><br/>
+                                 <input type="hidden" id="mobstatusConfirm" value="{{$mobileStatus}}">
+                                <input class="form-control input-lg phone"  name="verify_number" type="text" id="verify_number">
+                                <span id="valid-msg1" class="hide"></span>
+                                <span id="error-msg1" class="hide"></span>
+
+                                <span id="conmobile"></span>
+                          </div>
+
+                          </div>
+                          @endif
+
+                            <div class="form-row">
+                                 <div class="form-group col">
+
+                                    <button type="button" class="btn btn-primary mb-xl next-step float-right" name="sendOtp" id="sendOtp" onclick="sendOTP()">
+                                             Next
+                                    </button>
+                                 </div>
+                              </div>
+
+
+
+                      </form>
                     </div>
                 </div>
             </div>
-       </div>
+        </div>
+   </div>
 </div>
 <div class="col-md-12 tab-pane" id="step3">
 
-        <div class="featured-boxes">
-                        <!-- fail message -->
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div id="error2">
-                    </div>
-                    <div id="successMessage2"></div>
+    <div class="featured-boxes">
+                    <!-- fail message -->
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div id="error2">
+                </div>
+                <div id="successMessage2"></div>
 
-                    <div id="alertMessage3"></div>
-                    
-                   <div class="featured-box featured-box-primary text-left mt-5">
-                    <input type="hidden" id="checkOtpStatus" value="{{$mobileStatus}}">
-                        <div class="box-content" id="showOtpBox">
-                            <h4 class="heading-primary text-uppercase mb-md">OTP Confirmation</h4>
-                            <!-- <div class="row verify">
-                                <div class="col-md-12">
-                                    <label>
-                                        <span>Verification email sent on your email and OTP on mobile</span>
-                                    </label>
+                <div id="alertMessage3"></div>
+
+               <div class="featured-box featured-box-primary text-left mt-5">
+                <input type="hidden" id="checkOtpStatus" value="{{$mobileStatus}}">
+                    <div class="box-content" id="showOtpBox">
+                        <h4 class="heading-primary text-uppercase mb-md">OTP Confirmation</h4>
+                        <!-- <div class="row verify">
+                            <div class="col-md-12">
+                                <label>
+                                    <span>Verification email sent on your email and OTP on mobile</span>
+                                </label>
+                            </div>
+                        </div> -->
+                        <form name="verify_otp_form">
+                          <label for="mobile" class="required">Enter OTP</label><br/>
+                            <div class="row ">
+                                <div class="col-md-6">
+
+                                    <input type="hidden" name="user_id" id="hidden_user_id"/>
+                                    <input class="form-control input-lg"  id="oneTimePassword" name="oneTimePassword" type="text" >
+                                     <span id="enterotp"></span>
                                 </div>
-                            </div> -->
-                            <form name="verify_otp_form">
-                              <label for="mobile" class="required">Enter OTP</label><br/>
-                                <div class="row ">
-                                    <div class="col-md-6">
-                                        
-                                        <input type="hidden" name="user_id" id="hidden_user_id"/>
-                                        <input class="form-control input-lg"  id="oneTimePassword" name="oneTimePassword" type="text" >
-                                         <span id="enterotp"></span>
-                                    </div>
 
 
-                                    <div class="col-md-3">
-                                            <button type="button" class="btn btn-primary float-right mb-5" name="verifyOtp" id="verifyOtp" value="Verify OTP" onclick="verifyBySendOtp()" >
-                                                        Verify OTP
-                                            </button>
-                                    </div>
-
-
-                                    <div class="col-md-3">
-                                       <button type="button" class="btn btn-danger float-right mb-5" name="resendOTP" id="resendOTP">
-                                          Resend OTP
+                                <div class="col-md-3">
+                                        <button type="button" class="btn btn-primary float-right mb-5" name="verifyOtp" id="verifyOtp" value="Verify OTP" onclick="verifyBySendOtp()" >
+                                                    Verify OTP
                                         </button>
-                                  
-
-                                    </div>  
-                                                          
                                 </div>
 
-                                <div class="row">
-                                
-                                  <div class="col-sm-6 col-md-3 col-lg-6">
-                                      <p>Did not receive OTP via SMS?</p>
-                                   <button type="button" class="btn btn-secondary" name="voiceOTP" id="voiceOTP" value="Verify OTP" style= "margin-top:-15px;"><i class="fa fa-phone"></i>
-                                                 Receive OTP via Voice call
+
+                                <div class="col-md-3">
+                                   <button type="button" class="btn btn-danger float-right mb-5" name="resendOTP" id="resendOTP">
+                                      Resend OTP
                                     </button>
-                                 </div>
-                                   
+
+
                                 </div>
-                             
-                            </form>
-                          
-                        </div>
+
+                            </div>
+
+                            <div class="row">
+
+                              <div class="col-sm-6 col-md-3 col-lg-6">
+                                  <p>Did not receive OTP via SMS?</p>
+                               <button type="button" class="btn btn-secondary" name="voiceOTP" id="voiceOTP" value="Verify OTP" style= "margin-top:-15px;"><i class="fa fa-phone"></i>
+                                             Receive OTP via Voice call
+                                </button>
+                             </div>
+
+                            </div>
+
+                        </form>
+
                     </div>
                 </div>
             </div>
-       </div>
+        </div>
+   </div>
 </div>
-                    </div>
                 </div>
             </div>
-        </section>
-    </div>
-</div>
-@stop 
+    </section>
+
+@stop
 @section('script')
  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1027628032"></script>
 <script>
