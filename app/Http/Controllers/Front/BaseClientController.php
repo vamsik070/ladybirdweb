@@ -222,7 +222,7 @@ class BaseClientController extends Controller
                 return currency_format($model->grand_total, $code = $model->currency);
             })
             ->addColumn('status', function ($model) {
-                return AdminOrderInvoiceController::getStatusLabel($model->status);
+                return AdminOrderInvoiceController::getStatusLabel($model->status,'badge');
             })
             ->addColumn('action', function ($model) {
                 if (\Auth::user()->role == 'admin') {
