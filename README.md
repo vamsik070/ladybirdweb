@@ -9,7 +9,7 @@ Agora can also be customised according to requirement and we do undertake such r
 
 Agora is designed & developed by <a href="http://www.ladybirdweb.com/" target="_blank">Ladybird Web Solution Pvt Ltd</a>, and launched in March 2016.
 
-<h4>To run Agora your host just needs a couple of things:</h4>
+<h4>To run Agora your host just needs a couple of thingss</h4>
 <ul>
 <li> Web Server: Apache or IIS or Nginx</li>
 <li> PHP Version: 7.1+</li>
