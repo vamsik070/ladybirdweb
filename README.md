@@ -26,6 +26,6 @@ Agora is designed & developed by <a href="http://www.ladybirdweb.com/" target="_
 <h4>Agora Features</h4>
 https://github.com/ladybirdweb/agorainvoicing/wiki/Agora-Features
 
-<h3>Faveo Probe:</h3>
+<h3>Faveo Probee:</h3>
 <p>Helps verify whether your server can run Agora or not. 
 <a href="https://github.com/ladybirdweb/faveo-probe" target="_blank">Download here</a></p>
