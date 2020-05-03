@@ -5,7 +5,7 @@
 
 Billing and subscription management for SaaS & other software businesses. Handling signups, provisioning, billing and support
 
-Agora can also be customised according to requirement and we do undertake such request. 
+Agora can also be customised according to requirement and we do undertake such requestt. 
 
 Agora is designed & developed by <a href="http://www.ladybirdweb.com/" target="_blank">Ladybird Web Solution Pvt Ltd</a>, and launched in March 2016.
 
